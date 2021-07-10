@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-// import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiFillPlusCircle } from "react-icons/ai";
 
 export const GlobalStyle = createGlobalStyle`
@@ -12,38 +12,38 @@ P {
 }
 `;
 
-// export const NavStyled = styled.nav`
-//   background-color: ${(props) => props.theme.backgroundColor};
-// `;
+export const NavStyled = styled.nav`
+  background-color: #6d8ead;
+`;
 
 export const AiFillPlusCircleStyled = styled(AiFillPlusCircle)`
   color: ${(props) => props.theme.mainColor};
   margin-left: 70%;
 `;
 
-// export const Logo = styled(Link)`
-//   padding: 10em;
+export const Logo = styled(Link)`
+  padding: 10em;
 
-//   img {
-//     width: 30vh;
-//     height: 100%;
-//     display: block;
-//     margin-left: auto;
-//     margin-right: auto;
-//   }
-// `;
+  img {
+    width: 10vh;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
-// export const NavLinkStyled = styled(NavLink)`
-//   box-sizing: content-box;
-//   display: block;
-//   align-text: center;
-//   margin: 10px;
-//   font-size: 2em;
+export const NavLinkStyled = styled(NavLink)`
+  box-sizing: content-box;
+  display: block;
+  align-text: center;
+  margin: 10px;
+  font-size: 2em;
 
-//   &.active {
-//     color: ${(props) => props.theme.red};
-//   }
-// `;
+  &.active {
+    color: red;
+  }
+`;
 
 export const ShopItemImage = styled.img`
   widh: 20em;
@@ -81,6 +81,17 @@ export const LogoImage = styled.img`
   margin-right: auto;
   width: 30%;
 `;
+export const NBListWrapper = styled.div`
+  box-sizing: content-box;
+  width: 100%;
+  padding: 5px;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 30% 30% 30%; /*Make the grid smaller than the container*/
+  grid-gap: 10em;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const ListWrapper = styled.div`
   box-sizing: content-box;
@@ -91,6 +102,25 @@ export const ListWrapper = styled.div`
   grid-template-columns: 10% 10% 10%; /*Make the grid smaller than the container*/
   grid-gap: 10em;
   justify-content: center;
+  align-items: center;
+`;
+export const NoteBookWrapper = styled.div`
+  margin: 4vw;
+  box-sizing: content-box;
+  width: 100%;
+  border: 2px solid red;
+  border-radius: 20px;
+
+  img {
+    width: 250px;
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  p {
+    text-align: center;
+  }
 `;
 
 export const NoteWrapper = styled.div`

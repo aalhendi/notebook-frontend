@@ -14,7 +14,7 @@ class NoteStore {
       const response = await axios.get("http://localhost:8000/notes");
       this.notes = response.data;
     } catch (error) {
-      console.log("fetchPerfumes: ", error);
+      console.log("fetchNotes: ", error);
     }
   };
   noteDelete = async (noteId) => {
