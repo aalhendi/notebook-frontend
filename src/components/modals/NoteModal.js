@@ -5,15 +5,11 @@ import { CreateButtonStyled } from "../../styles";
 import noteStore from "../../stores/noteStore";
 
 const NoteModal = (props) => {
-  const [note, setNote] = useState(
-    props.previousNote
-      ? props.previousNote
-      : {
-          name: "",
-          description: "",
-          image: "",
-        }
-  );
+  const [note, setNote] = useState({
+    name: "",
+    description: "",
+    image: "",
+  });
 
   const handleChange = (event) => {
     setNote({ ...note, [event.target.name]: event.target.value });
@@ -28,8 +24,7 @@ const NoteModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (props.previousNote) noteStore.noteUpdate(note);
-    else noteStore.noteCreate(note);
+    noteStore.noteCreate(note);
     props.closeModal();
   };
 
@@ -63,18 +58,8 @@ const NoteModal = (props) => {
               />
             </div>
           </div>
-          <div className="form-group">
-            <label>Image</label>
-            <input
-              className="form-control"
-              type="text"
-              onChange={handleChange}
-              name="image"
-            />
-          </div>
-          <CreateButtonStyled>
-            {props.previousNote ? "update" : "Add"} note
-          </CreateButtonStyled>
+
+          <CreateButtonStyled>Add note</CreateButtonStyled>
         </form>
       </Modal>
     </div>

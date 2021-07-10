@@ -1,9 +1,8 @@
-import notebooks from "../book";
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
 
 class NoteBookStore {
-  notebooks = notebooks;
+  notebooks = [];
 
   constructor() {
     makeAutoObservable(this);
