@@ -1,12 +1,6 @@
 import React from "react";
 //style
-import {
-  ThemeButton,
-  NavLinkStyled,
-  Logo,
-  LogoImage,
-  NavStyled,
-} from "../styles";
+import { NavLinkStyled, Logo, LogoImage, NavStyled } from "../styles";
 
 //logo
 import NavLogo from "../imgs/notelogo.png";

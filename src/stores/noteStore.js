@@ -1,9 +1,9 @@
-import notes from "../data";
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
 
 class NoteStore {
-  notes = notes;
+  notes = [];
+  loading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -13,6 +13,7 @@ class NoteStore {
     try {
       const response = await axios.get("http://localhost:8000/notes");
       this.notes = response.data;
+      this.loading = false;
     } catch (error) {
       console.log("fetchNotes: ", error);
     }
@@ -27,17 +28,17 @@ class NoteStore {
     }
   };
 
-  noteCreate = async (newNote) => {
+  noteCreate = async (newNote, notebookId) => {
     try {
       const formData = new FormData();
       for (const key in newNote) formData.append(key, newNote[key]);
-      const response = await axios.post(
-        "http://localhost:8000/notes",
+      const res = await axios.post(
+        `http://localhost:8000/notebooks/${notebookId}/notes`,
         formData
       );
-      this.notes.push(response.data);
+      this.notes.push(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("noteCreate: ", error);
     }
   };
 
@@ -51,12 +52,6 @@ class NoteStore {
       );
       const note = this.notes.find((note) => note.id === response.data.id);
       for (const key in note) note[key] = response.data[key]; //loop over the keys variable which are the attributes in each object at the array
-
-      // perfume.name = updatePerfume.name;
-      // perfume.description = updatePerfume.description;
-      // perfume.price = updatePerfume.price;
-      // perfume.image = updatePerfume.image;
-      // perfume.slug = slugify(updatePerfume.name);
     } catch (error) {
       console.log(error);
     }

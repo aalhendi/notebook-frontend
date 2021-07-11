@@ -1,15 +1,20 @@
 import { observer } from "mobx-react";
-import { ShopItemImage, NoteBookWrapper } from "../styles";
+import { NoteBookWrapper } from "../styles";
 import { Link } from "react-router-dom";
 
-const NoteBookItem = (props) => {
+const NoteBookItem = ({ notebook }) => {
   return (
     <>
       <NoteBookWrapper>
-        <Link to={`/notebooks/${props.notebook.slug}`}>
-          <img alt={props.notebook.name} src={props.notebook.image} />
+        <Link to={`/notebooks/${notebook.slug}/notes`}>
+          <img
+            alt={notebook.name}
+            src={
+              "https://image.shutterstock.com/image-vector/notebook-students-on-white-background-260nw-1445518124.jpg"
+            }
+          />
         </Link>
-        <p>{props.notebook.name}</p>
+        <p>{notebook.name}</p>
       </NoteBookWrapper>
     </>
   );

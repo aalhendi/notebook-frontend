@@ -1,27 +1,21 @@
 import "./App.css";
-import Home from "./components/Home";
-import { Route, Switch } from "react-router";
-import NoteList from "./components/NoteList";
-import NoteBookList from "./components/NoteBookList";
 import NavBar from "./components/NavBar";
+import notebookStore from "./stores/notebookStore";
+import { observer } from "mobx-react";
+import Routes from "./components/Routes";
+import noteStore from "./stores/noteStore";
 
 function App() {
   return (
     <div>
       <NavBar />
-      <Switch>
-        <Route path="/notes">
-          <NoteList />
-        </Route>
-        <Route path="/notebooks">
-          <NoteBookList />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      {notebookStore.loading || noteStore.loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Routes />
+      )}
     </div>
   );
 }
 
-export default App;
+export default observer(App);

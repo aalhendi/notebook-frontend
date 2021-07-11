@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CreateButtonStyled } from "../../styles";
 import noteStore from "../../stores/noteStore";
 
-const NoteModal = (props) => {
+const NoteModal = ({ closeModal, isOpen, notebookId }) => {
   const [note, setNote] = useState({
     name: "",
     description: "",
@@ -13,7 +13,6 @@ const NoteModal = (props) => {
 
   const handleChange = (event) => {
     setNote({ ...note, [event.target.name]: event.target.value });
-    console.log(note);
   };
 
   //   const handleImage = (event) => {
@@ -24,16 +23,17 @@ const NoteModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    noteStore.noteCreate(note);
-    props.closeModal();
+    noteStore.noteCreate(note, notebookId);
+    closeModal();
   };
 
   return (
     <div>
       <Modal
-        isOpen={props.isOpen}
-        onRequestClose={props.closeModal}
+        isOpen={isOpen}
+        onRequestClose={closeModal}
         contentLabel="note Modal"
+        ariaHideApp={false}
       >
         <form onSubmit={handleSubmit}>
           <div className="form-group row">
