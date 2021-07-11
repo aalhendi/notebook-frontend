@@ -28,20 +28,6 @@ class NoteStore {
     }
   };
 
-  noteCreate = async (newNote, notebookId) => {
-    try {
-      const formData = new FormData();
-      for (const key in newNote) formData.append(key, newNote[key]);
-      const res = await axios.post(
-        `http://localhost:8000/notebooks/${notebookId}/notes`,
-        formData
-      );
-      this.notes.push(res.data);
-    } catch (error) {
-      console.log("noteCreate: ", error);
-    }
-  };
-
   noteUpdate = async (updateNote) => {
     try {
       const formData = new FormData();

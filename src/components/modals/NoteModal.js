@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 
 import { CreateButtonStyled } from "../../styles";
-import noteStore from "../../stores/noteStore";
+import notebookStore from "../../stores/notebookStore";
 
 const NoteModal = ({ closeModal, isOpen, notebookId }) => {
   const [note, setNote] = useState({
@@ -23,7 +23,7 @@ const NoteModal = ({ closeModal, isOpen, notebookId }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    noteStore.noteCreate(note, notebookId);
+    notebookStore.noteCreate(note, notebookId);
     closeModal();
   };
 
